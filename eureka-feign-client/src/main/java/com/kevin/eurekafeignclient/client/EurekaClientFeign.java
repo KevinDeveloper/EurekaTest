@@ -1,6 +1,7 @@
 package com.kevin.eurekafeignclient.client;
 
 import com.kevin.eurekafeignclient.config.FeignConfig;
+import com.kevin.eurekafeignclient.fallback.HiHystrix;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @Author: Kevin
  * @Date: 2018/5/25 10:47
  */
-@FeignClient(value = "eureka-client", configuration = FeignConfig.class)
+@FeignClient(value = "eureka-client", configuration = FeignConfig.class, fallback = HiHystrix.class)
 public interface EurekaClientFeign {
 
     @GetMapping(value = "/test/hi?name={name}")

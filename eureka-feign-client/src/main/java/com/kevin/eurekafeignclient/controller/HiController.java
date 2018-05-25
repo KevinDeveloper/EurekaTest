@@ -19,7 +19,7 @@ public class HiController {
     @Autowired
     private EurekaClientFeign eurekaClientFeign;
 
-    @RequestMapping(value = "/hi", method = RequestMethod.GET)
+    @RequestMapping(value = "/hi1", method = RequestMethod.GET)
     public String sayHi(String name){
         return eurekaClientFeign.sayHiFromClientEureka(name);
     }
