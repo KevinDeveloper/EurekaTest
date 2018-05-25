@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    config:
+#      uri: http://localhost:8900  #uri 从指定地址服务读取配置信息
+      fail-fast: true
+      discovery: # 从注册中心读取config-server
+        enabled: true
+        service-id: config-server
+  profiles:
+    active: dev
+
+  application:
+    name: config-client
+server:
+  port: 8901
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8760/eureka/
