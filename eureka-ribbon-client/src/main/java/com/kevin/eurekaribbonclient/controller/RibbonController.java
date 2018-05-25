@@ -1,5 +1,6 @@
 package com.kevin.eurekaribbonclient.controller;
 
+import com.kevin.eurekaribbonclient.service.RibbonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -21,14 +22,14 @@ import org.springframework.web.client.RestTemplate;
 public class RibbonController {
 
     @Autowired
-    RestTemplate restTemplate;
+    RibbonService ribbonService;
 
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
     @RequestMapping(value = "/hi", method = RequestMethod.GET)
     public String hi( String name){
-        return restTemplate.getForObject("http://eureka-client/test/hi?name="+name, String.class);
+        return ribbonService.hi(name);
     }
 
     @RequestMapping(value = "/testribbon", method = RequestMethod.GET)
